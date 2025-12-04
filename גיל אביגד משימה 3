@@ -1,0 +1,45 @@
+print("Task 1: String Basics")
+print("\n")
+full_name = "Gil Avigad" 
+print(full_name[0:10]) 
+print(full_name[0]) 
+print(full_name[9]) 
+print(full_name[:]) 
+
+print("\nTask 2: Slicing Practice")
+print("\n")
+text ="Programming" 
+print(text[0:11]) 
+text ="fun"
+print(text[-3:]) 
+character ="kakarot"
+print(character[::2])
+print(character[::-1])
+
+print("\nTask 3: Text Cleaning")
+print("\n")
+name = input("Enter your name:")
+print(name.title()) 
+print("Welcome",name)
+
+print("\nTask 4: Word Counter")
+print("\n")
+text = input("Write a sentence:")
+word_count = text.split()
+print("There are",len(word_count),"words in the sentence.")
+
+print("\nTask 5: Email Validator")
+print("\n")
+text = input("email address:") 
+number_of_sh = text.count("@")
+number_of_dot = text.count(".")
+number_of_co = text.count(".co")
+
+print("Number of @:",number_of_sh)
+print("Number of .:",number_of_dot)
+
+if number_of_sh == 1 and number_of_dot >= 1:
+    print("Valid email")
+else:
+    print("Invalid email")
+
