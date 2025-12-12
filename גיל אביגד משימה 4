@@ -1,0 +1,72 @@
+print("Task 1: Number Comparison")
+print("\n")
+num1 = float(input("Enter the first number: "))
+num2 = float(input("Enter the second number: "))
+
+if num1 > num2:
+    print(f"{num1} is larger than {num2}")
+elif num2 > num1:
+    print(f"{num2} is larger than {num1}")
+else:
+    print("The numbers are equal")  
+print("\nTask 2: Positive, Negative, or Zero")
+print("\n")
+num = float(input("Enter a number: "))
+
+if num > 0:
+    print("The number is positive")
+elif num < 0:
+    print("The number is negative")
+else:
+    print("The number is zero") 
+print("\nTask 3: Even or Odd") 
+print("\n")
+num = int(input("Enter a number: "))
+
+if num % 2 == 0:
+    print("Even")
+else:
+    print("Odd") 
+print("\nTask 4: Age Category") 
+print("\n") 
+age = int(input("Enter your age: "))
+
+if 0 <= age <= 12:
+    print("Child")
+elif 13 <= age <= 19:
+    print("Teenager")
+elif 20 <= age <= 64:
+    print("Adult")
+elif age >= 65:
+    print("Senior")
+else:
+    print("Invalid age") 
+print("\nTask 5: Grade Calculator") 
+print("\n") 
+score = float(input("Enter the score: "))
+
+if 90 <= score <= 100:
+    print("A")
+elif 80 <= score <= 89:
+    print("B")
+elif 70 <= score <= 79:
+    print("C")
+elif 60 <= score <= 69:
+    print("D")
+elif 0 <= score < 60:
+    print("F")
+else:
+    print("Invalid score") 
+print("Task 6: Password Validator") 
+print("\n")
+correct_password = "python123"
+
+password = input("Enter the password: ")
+
+if len(password) < 6:
+    print("Password must be at least 6 characters long")
+else:
+    if password == correct_password:
+        print("Access granted")
+    else:
+        print("Access denied")
