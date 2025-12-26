@@ -1,0 +1,101 @@
+print("Task 1: Countdown")
+print("\n")
+for i in range(10, 0, -1):
+    print(i)
+print("Blast off!")
+
+print("Task 2: Sum Calculator")
+print("\n")
+total = 0
+
+while True:
+    num = int(input("Enter a number (0 to stop): "))
+    if num == 0:
+        break
+    total += num
+
+print("Final sum:", total)
+
+print("\nTask 3: Password Entry")
+print("\n")
+correct_password = "python"
+attempts = 0
+
+while attempts < 3:
+    password = input("Enter password: ")
+    if password == correct_password:
+        print("Access granted")
+        break
+    else:
+        attempts += 1
+        print("Wrong password")
+
+if attempts == 3:
+ print("Access denied")
+
+print("\nTask 4: Guessing Game")
+print("\n")
+secret_number = 7
+guesses = 0
+
+while True:
+    guess = int(input("Guess a number between 1 and 10: "))
+    guesses += 1
+
+    if guess < secret_number:
+        print("Too low")
+    elif guess > secret_number:
+        print("Too high")
+    else:
+        print(f"Correct! It took you {guesses} guesses.")
+        break
+
+print("\nTask 5: Menu System")
+print("\n")
+while True:
+    print("\nMenu:")
+    print("1 - Add")
+    print("2 - Subtract")
+    print("3 - Multiply")
+    print("4 - Divide")
+    print("5 - Exit")
+
+    choice = input("Choose an option: ")
+
+    if choice == "5":
+        print("Goodbye!")
+        break
+
+    if choice in ["1", "2", "3", "4"]:
+        num1 = float(input("Enter first number: "))
+        num2 = float(input("Enter second number: "))
+
+        if choice == "1":
+            print("Result:", num1 + num2)
+        elif choice == "2":
+            print("Result:", num1 - num2)
+        elif choice == "3":
+            print("Result:", num1 * num2)
+        elif choice == "4":
+            if num2 != 0:
+                print("Result:", num1 / num2)
+            else:
+                print("Cannot divide by zero")
+    else:
+        print("Invalid choice")
+
+print ("\nTask 6: Even Numbers Only (Challenge)")
+print("\n")
+even_numbers = []
+
+while True:
+    num = int(input("Enter an even number (0 to stop): "))
+
+    if num == 0:
+        break
+    elif num % 2 != 0:
+        print("Only even numbers!")
+    else:
+        even_numbers.append(num)
+
+print("Even numbers entered:", even_numbers)
