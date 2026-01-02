@@ -97,5 +97,100 @@ while True:
         print("Only even numbers!")
     else:
         even_numbers.append(num)
+print("Even numbers entered:", even_numbers) 
+print("\nAdvanced Challenge")
+print("\n")
+balance = 1000
 
-print("Even numbers entered:", even_numbers)
+while True:
+    print("\n--- ATM Menu ---")
+    print("1. Check balance")
+    print("2. Deposit money")
+    print("3. Withdraw money")
+    print("4. Exit")
+
+    choice = input("Choose an option (1-4): ")
+
+    if choice == "1":
+        print(f"Your current balance is: {balance}")
+
+    elif choice == "2":
+        amount = input("Enter deposit amount: ")
+
+        if not amount.isdigit():
+            print("Invalid input. Please enter a positive number.")
+            continue
+
+        amount = int(amount)
+        if amount <= 0:
+            print("Deposit amount must be greater than 0.")
+        else:
+            balance += amount
+            print(f"Deposited {amount}. New balance: {balance}")
+
+    elif choice == "3":
+        amount = input("Enter withdrawal amount: ")
+
+        if not amount.isdigit():
+            print("Invalid input. Please enter a positive number.")
+            continue
+
+        amount = int(amount)
+        if amount <= 0:
+            print("Withdrawal amount must be greater than 0.")
+        elif amount > balance:
+            print("Insufficient balance.")
+        else:
+            balance -= amount
+            print(f"Withdrew {amount}. New balance: {balance}")
+
+    elif choice == "4":
+        print("Thank you for using the ATM. Goodbye!")
+        break
+
+    else:
+        print("Invalid option. Please choose between 1 and 4.") 
+
+print("\nHomework") 
+print("\nMultiplication Table")
+print("\n")
+num = int(input("Enter a number: "))
+
+i = 1
+while i <= 10:
+    print(f"{num} x {i} = {num * i}")
+    i += 1 
+print("\nPositive Numbers Only (Average)") 
+print("\n") 
+count = 0
+total = 0
+
+while True:
+    num = int(input("Enter a positive number (-1 to stop): "))
+
+    if num == -1:
+        break
+    elif num > 0:
+        total += num
+        count += 1
+    else:
+        print("Only positive numbers are allowed.")
+
+if count > 0:
+    average = total / count
+    print("Average:", average)
+else:
+    print("No positive numbers were entered.") 
+print("\nSimple Game (Points System)") 
+print("\n") 
+import random
+
+points = 100
+
+while points > 0:
+    loss = random.randint(5, 15)
+    points -= loss
+    print(f"You lost {loss} points. Remaining points: {points}")
+
+print("Game over!")
+print("Final score:", points)
