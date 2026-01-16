@@ -1,0 +1,42 @@
+print("Task 1: List Basics")
+print("\n")
+favorite_foods = ["Pizza", "Sushi", "Tacos", "Pasta", "Ice Cream"]
+
+for food in favorite_foods:
+    print(food)
+
+print("Total number of foods:", len(favorite_foods)) 
+print("\nTask 2: Sum and Average") 
+print("\n") 
+numbers = [10, 20, 30, 40, 50]
+
+total = 0
+for num in numbers:
+    total += num
+
+average = total / len(numbers)
+
+print("Sum:", total)
+print("Average:", average) 
+print("\nTask 3: Shopping List") 
+print("\n") 
+shopping_list = []
+
+for i in range(5):
+    item = input("Enter an item: ")
+    shopping_list.append(item)
+
+print("Shopping List:")
+for item in shopping_list:
+    print(item) 
+print("\nTask 4: Find Maximum") 
+print("\n") 
+numbers = [12, 45, 7, 89, 23, 56]
+
+largest = numbers[0]
+
+for num in numbers:
+    if num > largest:
+        largest = num
+
+print("The maximum value is:", largest)
