@@ -1,0 +1,348 @@
+print("STEP 1")
+print("\n")
+
+import random
+
+bot_name = "SmartBot"
+
+greetings = ["Hello", "Hi", "Hey", "Greetings", "Nice to meet you"]
+goodbyes = ["Goodbye", "Bye", "See you", "Take care", "Later"]
+jokes = [
+    "Why did the computer go to the doctor? Because it caught a virus",
+    "Why do programmers prefer dark mode? Because light attracts bugs",
+    "Why did the math book look sad? Because it had too many problems",
+    "Why was the computer cold? It forgot to close its windows",
+    "Why did the student eat his homework? Because the teacher said it was a piece of cake"
+]
+
+print("Bot Name:", bot_name)
+print("Sample Greeting:", random.choice(greetings))
+print("Sample Joke:", random.choice(jokes))
+
+
+print("\nSTEP 2")
+print("\n")
+
+def print_separator():
+    print("==========================================")
+
+def print_bot(message):
+    print(bot_name + ":", message)
+
+def show_help():
+    print("I can:")
+    print("- Chat with you")
+    print("- Tell jokes")
+    print("- Play a guessing game")
+    print("- Do simple math")
+    print("- Respond to your mood")
+
+print_separator()
+show_help()
+
+
+print("\nSTEP 3")
+print("\n")
+
+def greet_user():
+    print_bot("Welcome to the chatbot")
+    name = input("What is your name? ")
+    print_bot("Nice to meet you " + name)
+    return name
+
+def tell_joke():
+    return random.choice(jokes)
+
+user_name = "TestUser"
+print("Joke:", tell_joke())
+
+
+print("\nSTEP 4")
+print("\n")
+
+def analyze_mood(message):
+    happy_words = ["happy", "great", "good", "awesome", "fun"]
+    sad_words = ["sad", "bad", "terrible", "angry", "upset"]
+
+    message = message.lower()
+
+    for word in happy_words:
+        if word in message:
+            return "happy"
+
+    for word in sad_words:
+        if word in message:
+            return "sad"
+
+    return "neutral"
+
+print("Mood test:", analyze_mood("I feel great today"))
+
+
+print("\nSTEP 5")
+print("\n")
+
+def play_guess_game():
+    number = random.randint(1, 20)
+    attempts = 0
+
+    while True:
+        guess = input("Guess a number between 1-20: ")
+
+        try:
+            guess = int(guess)
+            attempts += 1
+
+            if guess < number:
+                print("Too low")
+            elif guess > number:
+                print("Too high")
+            else:
+                return "Correct! Attempts: " + str(attempts)
+
+        except:
+            print("Enter a valid number")
+
+print("Game function ready")
+
+
+print("\nSTEP 6")
+print("\n")
+
+def get_response(message, user_name):
+    message_lower = message.lower()
+
+    if "hello" in message_lower or "hi" in message_lower:
+        return random.choice(greetings) + " " + user_name
+
+    elif "how are you" in message_lower:
+        return "I am doing well"
+
+    elif "your name" in message_lower:
+        return "My name is " + bot_name
+
+    elif "joke" in message_lower:
+        return tell_joke()
+
+    elif "game" in message_lower:
+        return "game_menu"
+
+    elif "help" in message_lower:
+        show_help()
+        return "What else do you need"
+
+    elif "+" in message_lower or "-" in message_lower or "*" in message_lower:
+        try:
+            return str(eval(message))
+        except:
+            return "Math error"
+
+    mood = analyze_mood(message)
+    if mood == "happy":
+        return "That is great to hear"
+    elif mood == "sad":
+        return "I hope things get better"
+
+    return "Tell me more"
+
+print("Response test:", get_response("tell me a joke", "Alex"))
+
+
+print("\nSTEP 7")
+print("\n")
+
+def chat():
+    user_name = greet_user()
+    show_help()
+
+    while True:
+        user_message = input(user_name + ": ").strip()
+
+        if not user_message:
+            continue
+
+        if "bye" in user_message.lower():
+            print_bot(random.choice(goodbyes) + " " + user_name)
+            break
+
+        response = get_response(user_message, user_name)
+
+        if response == "game_menu":
+            print("1. Guessing Game")
+            print("2. Exit")
+
+            choice = input("Choose: ")
+
+            if choice == "1":
+                result = play_guess_game()
+                print_bot(result)
+            else:
+                print_bot("Maybe later")
+
+        else:
+            print_bot(response)
+
+chat() 
+
+print("STEP 1")
+print("\n")
+
+# game world
+locations = {
+    "entrance": {
+        "description": "You are at the entrance of a dark castle",
+        "exits": {"north": "hall"},
+        "items": []
+    },
+    "hall": {
+        "description": "A long hallway with old paintings",
+        "exits": {"south": "entrance", "east": "kitchen", "north": "treasure_room"},
+        "items": ["key"]
+    },
+    "kitchen": {
+        "description": "A messy kitchen",
+        "exits": {"west": "hall"},
+        "items": ["apple"]
+    },
+    "treasure_room": {
+        "description": "A locked room with treasure",
+        "exits": {"south": "hall"},
+        "items": ["treasure"]
+    },
+    "garden": {
+        "description": "A quiet garden",
+        "exits": {"west": "hall"},
+        "items": ["flower"]
+    }
+}
+
+print("Locations created:", list(locations.keys()))
+
+
+print("\nSTEP 2")
+print("\n")
+
+def print_separator():
+    print("==========================================")
+
+def show_commands():
+    print("Commands:")
+    print("look")
+    print("go [direction]")
+    print("take [item]")
+    print("inventory")
+    print("help")
+    print("quit")
+
+print_separator()
+show_commands()
+
+
+print("\nSTEP 3")
+print("\n")
+
+def show_intro():
+    print_separator()
+    print("Welcome to Castle Adventure")
+    print("Find the treasure to win")
+    print_separator()
+
+def show_location(current_location, locations):
+    loc = locations[current_location]
+    print("\nLocation:", current_location)
+    print(loc["description"])
+    print("Exits:", list(loc["exits"].keys()))
+    
+    if loc["items"]:
+        print("Items:", loc["items"])
+    else:
+        print("No items here")
+
+def show_inventory(inventory):
+    if not inventory:
+        print("Inventory is empty")
+    else:
+        print("Inventory:", inventory)
+
+show_intro()
+
+
+print("\nSTEP 4")
+print("\n")
+
+def take_item(current_location, item_name, inventory, locations):
+    if item_name in locations[current_location]["items"]:
+        locations[current_location]["items"].remove(item_name)
+        inventory.append(item_name)
+        print(item_name, "taken")
+    else:
+        print("Item not found")
+
+def go_direction(current_location, direction, locations):
+    if direction in locations[current_location]["exits"]:
+        return locations[current_location]["exits"][direction]
+    else:
+        print("You cannot go that way")
+        return current_location
+
+def check_win(inventory):
+    return "treasure" in inventory
+
+print("Functions ready")
+
+
+print("\nSTEP 5")
+print("\n")
+
+def play_game():
+    current_location = "entrance"
+    inventory = []
+    moves = 0
+
+    show_intro()
+    show_commands()
+
+    while True:
+        show_location(current_location, locations)
+
+        command = input("> ").lower().strip()
+
+        if command == "quit":
+            print("Goodbye")
+            break
+
+        elif command == "look":
+            continue
+
+        elif command == "inventory":
+            show_inventory(inventory)
+
+        elif command == "help":
+            show_commands()
+
+        elif command.startswith("go "):
+            parts = command.split()
+            direction = parts[1]
+            current_location = go_direction(current_location, direction, locations)
+            moves += 1
+
+        elif command.startswith("take "):
+            parts = command.split()
+            item = parts[1]
+            take_item(current_location, item, inventory, locations)
+
+        else:
+            print("Unknown command")
+
+        if check_win(inventory):
+            print("You found the treasure and won the game")
+            print("Total moves:", moves)
+            break
+
+print("Game ready")
+
+
+print("\nSTEP 6")
+print("\n")
+
+play_game()
