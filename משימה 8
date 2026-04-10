@@ -1,0 +1,84 @@
+print("task 1") 
+print("\n")
+import math
+
+num = float(input("Enter a number: "))
+
+square_root = math.sqrt(num)
+squared = math.pow(num, 2)
+ceil_val = math.ceil(num)
+floor_val = math.floor(num)
+
+print("Square root:", square_root)
+print("Number squared:", squared)
+print("Rounded up (ceil):", ceil_val)
+print("Rounded down (floor):", floor_val) 
+print("\ntask 2") 
+print("\n") 
+num = float(input("Enter a number: "))
+
+square_root = math.sqrt(num)
+squared = math.pow(num, 2)
+ceil_val = math.ceil(num)
+floor_val = math.floor(num)
+
+print("Square root:", square_root)
+print("Number squared:", squared)
+print("Rounded up (ceil):", ceil_val)
+print("Rounded down (floor):", floor_val) 
+print("\ntask 3") 
+print("\n") 
+t = turtle.Turtle()
+
+t.pencolor("blue")
+t.pensize(3)
+
+for _ in range(4):
+    t.forward(150)
+    t.right(90)
+
+turtle.done() 
+print("\ntask 4") 
+print("\n") 
+t = turtle.Turtle()
+
+t.pencolor("red")
+for _ in range(3):
+    t.forward(100)
+    t.left(120)
+
+t.penup()
+t.goto(200, 0)
+t.pendown()
+
+t.pencolor("blue")
+for _ in range(4):
+    t.forward(100)
+    t.right(90)
+
+t.penup()
+t.goto(-200, 0)
+t.pendown()
+
+t.pencolor("green")
+t.circle(50)
+
+turtle.done() 
+print("\ntask 5") 
+print("\n") 
+t = turtle.Turtle()
+
+colors = ["red", "blue", "green", "purple", "orange", "pink", "brown", "black"]
+
+for i in range(8):
+    t.pencolor(colors[i])
+    
+
+    for _ in range(4):
+        t.forward(100)
+        t.right(90)
+    
+
+    t.right(45)
+
+turtle.done()
