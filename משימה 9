@@ -1,0 +1,266 @@
+print("task 1") 
+print("\n") 
+my_info = {
+    "name": "Alex",
+    "age": 20,
+    "favorite_food": "Pizza",
+    "favorite_color": "Blue",
+    "hobby": "Reading"
+}
+
+print("Full dictionary:")
+print(my_info)
+
+print("\nName:", my_info["name"])
+print("Age:", my_info["age"])
+print("Favorite Food:", my_info["favorite_food"])
+print("Favorite Color:", my_info["favorite_color"])
+print("Hobby:", my_info["hobby"]) 
+print("\ntask 2") 
+print("\n") 
+
+car = {
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2020
+}
+
+car["color"] = "blue"
+
+car["year"] = 2021
+
+car["price"] = 25000
+
+print(car) 
+print("\ntask 3") 
+print("\n") 
+student = {
+    "name": "Emma",
+    "age": 21,
+    "major": "Computer Science",
+    "grade": "A",
+    "city": "New York"
+}
+
+print("Keys:")
+print(student.keys())
+
+print("\nValues:")
+print(student.values())
+
+key_to_check = "age"
+
+if key_to_check in student:
+    print("\nThe key", key_to_check, "exists in the dictionary.")
+else:
+    print("\nThe key", key_to_check, "does not exist in the dictionary.")
+
+print("\nKey-Value Pairs:")
+for key, value in student.items():
+    print(key, ":", value) 
+print("\ntask 4") 
+print("\n") 
+contacts = {}
+
+contacts["Alice"] = "123-456-7890"
+contacts["Bob"] = "987-654-3210"
+contacts["Charlie"] = "555-123-4567"
+
+name = input("Enter a name to look up: ")
+
+if name in contacts:
+    print("Phone number:", contacts[name])
+else:
+    print("Contact not found") 
+print("\ntask 5") 
+print("\n") 
+students = [
+    {"name": "Alice", "age": 20, "grade": "A"},
+    {"name": "Bob", "age": 22, "grade": "B"},
+    {"name": "Charlie", "age": 21, "grade": "A"}
+]
+
+print("Student Names:")
+for student in students:
+    print(student["name"])
+
+total_age = 0
+for student in students:
+    total_age += student["age"]
+
+average_age = total_age / len(students)
+print("\nAverage Age:", average_age)
+
+count_A = 0
+for student in students:
+    if student["grade"] == "A":
+        count_A += 1
+
+print("Number of students with grade A:", count_A) 
+print("\nAdvanced Challenge (Optional)")
+print("\n")
+students = {}
+
+def add_student(name):
+    if name not in students:
+        students[name] = []
+    else:
+        print(f"{name} already exists.")
+
+def add_score(name, score):
+    if name in students:
+        students[name].append(score)
+    else:
+        print(f"{name} not found.")
+
+def calculate_average(name):
+    if name in students and students[name]:
+        return sum(students[name]) / len(students[name])
+    else:
+        return 0
+
+def highest_average():
+    best_student = None
+    highest_avg = 0
+
+    for name in students:
+        avg = calculate_average(name)
+        if avg > highest_avg:
+            highest_avg = avg
+            best_student = name
+
+    return best_student, highest_avg
+
+
+add_student("Alice")
+add_student("Bob")
+add_student("Charlie")
+
+add_score("Alice", 90)
+add_score("Alice", 85)
+
+add_score("Bob", 70)
+add_score("Bob", 75)
+
+add_score("Charlie", 95)
+add_score("Charlie", 100)
+
+print("Alice average:", calculate_average("Alice"))
+print("Bob average:", calculate_average("Bob"))
+print("Charlie average:", calculate_average("Charlie"))
+
+student, avg = highest_average()
+print(f"Top student: {student} with average {avg}") 
+print("\nLesson Summary") 
+print("\n")
+student = {"name": "Alice", "age": 15}
+
+d = {"a": 1, "b": 2}
+
+x = d["a"]        
+y = d.get("a")    
+
+d["c"] = 3
+d["a"] = 10
+
+del d["b"]
+d.pop("a")
+
+keys = d.keys()
+values = d.values()
+items = d.items()
+
+for key, value in d.items():
+    print(key, value)
+
+students = {
+    "Alice": {"age": 15, "grade": "A"},
+    "Bob": {"age": 16, "grade": "B"}
+}
+print(students["Alice"]["grade"])
+
+students_list = [
+    {"name": "Alice", "grade": "A"},
+    {"name": "Bob", "grade": "B"}
+]
+print(students_list[0]["name"])
+
+text = "hello"
+count = {}
+for char in text:
+    count[char] = count.get(char, 0) + 1 
+print("\nHomework") 
+print("\n") 
+sentence = input("Enter a sentence: ").lower()
+words = sentence.split()
+
+word_count = {}
+
+for word in words:
+    word_count[word] = word_count.get(word, 0) + 1
+
+print("\nWord Counts:")
+for word, count in word_count.items():
+    print(f"{word}: {count}")
+
+menu = {
+    "pizza": 40,
+    "burger": 25,
+    "salad": 20,
+    "drink": 10
+}
+
+order = []
+total = 0
+
+print("\nMenu:")
+for item, price in menu.items():
+    print(f"{item}: {price}")
+
+while True:
+    choice = input("Enter item to order (or 'done' to finish): ").lower()
+    
+    if choice == "done":
+        break
+    
+    if choice in menu:
+        order.append(choice)
+        total += menu[choice]
+        print(f"{choice} added.")
+    else:
+        print("Item not found.")
+
+print("\nYour Order:", order)
+print("Total bill:", total)
+
+students = {
+    "student1": {
+        "name": "Alice",
+        "grades": [90, 85, 88],
+        "attendance": 95
+    },
+    "student2": {
+        "name": "Bob",
+        "grades": [70, 75, 72],
+        "attendance": 88
+    },
+    "student3": {
+        "name": "Charlie",
+        "grades": [95, 100, 98],
+        "attendance": 98
+    }
+}
+
+print("\nStudent Report:")
+best_attendance = 0
+best_student = ""
+
+for student_id, info in students.items():
+    avg = sum(info["grades"]) / len(info["grades"])
+    print(f"{info['name']} - Average Grade: {avg}, Attendance: {info['attendance']}%")
+    
+    if info["attendance"] > best_attendance:
+        best_attendance = info["attendance"]
+        best_student = info["name"]
+
+print(f"\nBest Attendance: {best_student} ({best_attendance}%)")
