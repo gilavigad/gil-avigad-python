@@ -1,0 +1,243 @@
+print("Task 1") 
+print("\n")
+while True:
+    try:
+        user_input = input("Enter a number: ")
+        number = float(user_input)  
+        print("Squared value:", number ** 2)
+        break  
+    except ValueError:
+        print("Invalid input. Please enter a valid number.") 
+print("\nTask 2") 
+print("\n") 
+def safe_divide(a, b):
+    try:
+        result = a / b
+        return result
+    except ZeroDivisionError:
+        return "Error: Cannot divide by zero."
+
+print(safe_divide(10, 2))   
+print(safe_divide(5, 0))    
+print(safe_divide(-8, 4))   
+print(safe_divide(7, 2))    
+print("\nTask 3") 
+print("\n") 
+items = ["apple", "banana", "cherry", "date", "elderberry"]
+
+while True:
+    try:
+        index = int(input("Enter an index (0–4): "))
+        print("Item at index:", items[index])
+        break  
+    except IndexError:
+        print("Error: Index out of range. Please enter a value between 0 and 4.")
+    except ValueError:
+        print("Error: Please enter a valid integer.") 
+print("\nTask 4") 
+print("\n") 
+countries = {
+    "USA": "Washington, D.C.",
+    "France": "Paris",
+    "Japan": "Tokyo",
+    "Israel": "Jerusalem",
+    "Brazil": "Brasília"
+}
+
+country = input("Enter a country name: ")
+
+capital = countries.get(country)
+if capital:
+    print("Capital:", capital)
+else:
+    print("Country not found") 
+print("\nTask 5") 
+print("\n") 
+while True:
+    try:
+        
+        a = float(input("Enter first number: "))
+        b = float(input("Enter second number: "))
+
+        
+        op = input("Enter operation (+, -, *, /): ")
+
+        
+        if op == "+":
+            result = a + b
+        elif op == "-":
+            result = a - b
+        elif op == "*":
+            result = a * b
+        elif op == "/":
+            result = a / b  
+        else:
+            raise ValueError("Invalid operation")
+
+        print("Result:", result)
+        break  
+
+    except ValueError as e:
+        if str(e) == "Invalid operation":
+            print("Error: Invalid operation. Choose +, -, *, or /.")
+        else:
+            print("Error: Please enter valid numbers.")
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero.") 
+print("\nTask 6") 
+print("\n") 
+filename = input("Enter a filename: ")
+
+try:
+    with open(filename, "r") as file:
+        content = file.read()
+        print("\nFile contents:\n")
+        print(content)
+
+except FileNotFoundError:
+    print("Error: File not found.")
+except PermissionError:
+    print("Error: Permission denied. Cannot read the file.")
+finally:
+    print("Operation complete.") 
+print("\nAdvanced Challenge") 
+print("\n") 
+students = {}
+
+def add_student(name):
+    try:
+        if not isinstance(name, str) or not name.strip():
+            raise ValueError("Invalid name.")
+        if name in students:
+            raise ValueError("Student already exists.")
+        students[name] = []
+        print(f"Student '{name}' added.")
+    except ValueError as e:
+        print("Error:", e)
+
+def add_grade(name, grade):
+    try:
+        if name not in students:
+            raise KeyError("Student not found.")
+        grade = float(grade)
+        if grade < 0 or grade > 100:
+            raise ValueError("Grade must be between 0 and 100.")
+        students[name].append(grade)
+        print(f"Added grade {grade} to '{name}'.")
+    except KeyError as e:
+        print("Error:", e)
+    except ValueError:
+        print("Error: Invalid grade. Must be a number between 0 and 100.")
+
+def calculate_average(name):
+    try:
+        if name not in students:
+            raise KeyError("Student not found.")
+        grades = students[name]
+        if not grades:
+            raise ValueError("No grades available.")
+        avg = sum(grades) / len(grades)
+        return avg
+    except KeyError as e:
+        print("Error:", e)
+    except ValueError as e:
+        print("Error:", e)
+
+
+def get_student_info(name):
+    try:
+        if name not in students:
+            raise KeyError("Student not found.")
+        grades = students[name]
+        avg = calculate_average(name)
+        print(f"Student: {name}")
+        print(f"Grades: {grades}")
+        if avg is not None:
+            print(f"Average: {avg:.2f}")
+    except KeyError as e:
+        print("Error:", e)
+
+
+add_student("Alice")
+add_grade("Alice", 90)
+add_grade("Alice", 85)
+get_student_info("Alice")
+
+add_student("Alice")
+
+add_grade("Alice", 150)
+
+add_grade("Alice", "abc")
+
+add_grade("Bob", 75)
+get_student_info("Bob")
+
+add_student("Charlie")
+print("Average:", calculate_average("Charlie")) 
+print("\nHomework") 
+print("\n1") 
+while True:
+    try:
+        age_input = input("Enter your age: ")
+        age = int(age_input)
+
+        if age < 0 or age > 120:
+            raise ValueError("Age must be between 0 and 120.")
+
+        print("Valid age:", age)
+        break
+
+    except ValueError as e:
+        if str(e) == "Age must be between 0 and 120.":
+            print("Error:", e)
+        else:
+            print("Error: Please enter a valid number.") 
+print("\n2") 
+def list_statistics(data):
+    try:
+        if not data:
+            raise ValueError("List is empty.")
+
+    
+        numbers = []
+        for item in data:
+            try:
+                numbers.append(float(item))
+            except ValueError:
+                raise ValueError(f"Non-numeric value found: {item}")
+
+        total = sum(numbers)
+        avg = total / len(numbers)
+        minimum = min(numbers)
+        maximum = max(numbers)
+
+        return {
+            "sum": total,
+            "average": avg,
+            "min": minimum,
+            "max": maximum
+        }
+
+    except ValueError as e:
+        return f"Error: {e}"
+
+
+print(list_statistics([1, 2, 3, 4, 5]))       
+print(list_statistics([]))                    
+print(list_statistics([1, "a", 3]))           
+print("\n3") 
+import json
+
+data_string = '{"name": "Alice", "age": 25}'
+
+try:
+    data_dict = json.loads(data_string)
+
+    if isinstance(data_dict, dict):
+        print("Successfully parsed dictionary:")
+        print(data_dict)
+    else:
+        print("Error: JSON is valid but not a dictionary.")
+
+except json.JSONDecodeError:
+    print("Error: Invalid JSON format.")
